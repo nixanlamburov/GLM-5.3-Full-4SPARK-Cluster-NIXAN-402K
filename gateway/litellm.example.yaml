@@ -1,0 +1,10 @@
+model_list:
+  - model_name: glm-5.3-long
+    litellm_params:
+      model: openai/glm-5.3
+      api_base: http://<VLLM_GATEWAY_HOST>:8002/v1
+      # Inject the API key from a secret manager/environment at deployment time.
+      max_tokens: 24576
+
+# Add the verified custom admission/reservation callback separately.
+# Never commit a LiteLLM master key or production client key.

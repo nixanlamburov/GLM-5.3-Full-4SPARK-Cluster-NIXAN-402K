@@ -1,0 +1,17 @@
+{
+  "official_profile_name": "GLM 5.3 Full 4SPARK Cluster NIXAN 402K",
+  "run_id": "20261030T123433Z-a52f56954d33",
+  "status": "COMPLETE",
+  "wall_seconds": 19792.78,
+  "model_requests_successful": 61,
+  "prompt_tokens_cumulative": 9394780,
+  "completion_tokens_cumulative": 60268,
+  "max_prompt_tokens": 276426,
+  "final_artifact_tokens": 8430,
+  "final_artifact_bytes": 36328,
+  "peak_observed_kv_percent": 68.0,
+  "preemptions": 0,
+  "oom_events": 0,
+  "technical_scores_only": true,
+  "legal_quality_scored": false
+}

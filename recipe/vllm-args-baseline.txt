@@ -1,0 +1,25 @@
+--served-model-name glm-5.3
+--tensor-parallel-size 4
+--nnodes 4
+--master-port 29502
+--host 127.0.0.1
+--port 8002
+--max-model-len 402000
+--max-num-seqs 1
+--max-num-batched-tokens 2048
+--kv-cache-dtype fp8_ds_mla
+--kv-cache-memory-bytes 5500000000
+--gpu-memory-utilization 0.85
+--decode-context-parallel-size 4
+--cp-kv-cache-interleave-size 1
+--attention-backend FLASHINFER_MLA_SPARSE_SM120
+--chat-template /templates/chat_template.jinja
+--reasoning-parser glm45
+--tool-call-parser glm47
+--enable-auto-tool-choice
+--uvicorn-log-level warning
+--disable-uvicorn-access-log
+--logprobs-mode raw_logprobs
+--max-logprobs 20
+--no-enable-prefix-caching
+-cc.cudagraph_mode=FULL_DECODE_ONLY

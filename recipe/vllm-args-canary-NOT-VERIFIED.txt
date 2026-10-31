@@ -1,0 +1,5 @@
+# NOT PART OF THE VERIFIED BASELINE.
+# Start from vllm-args-baseline.txt and change only:
+--enable-prefix-caching
+--max-num-batched-tokens 8192
+# Test 16384 only as a separate A/B run after 8192 passes.
