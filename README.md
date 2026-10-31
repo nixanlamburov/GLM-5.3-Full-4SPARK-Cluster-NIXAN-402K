@@ -48,7 +48,7 @@ not establish legal correctness.
 
 ## Publication status
 
-This is a private deployment recipe. Model weights are absent.
+This is a public deployment recipe. Model weights are absent.
 
 Pinned: checkpoint revision `206507bbb047d8223964a0414cd83230c59428f9`,
 upstream license, checkpoint chat template, vLLM commit
