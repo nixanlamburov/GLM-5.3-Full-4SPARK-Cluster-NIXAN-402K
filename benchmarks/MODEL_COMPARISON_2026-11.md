@@ -1,14 +1,15 @@
-# Three-model comparison: GLM C2aK · GLM C2aKP · DeepSeek V4.1 Flash
+# Four-model comparison: GLM C2aK · GLM C2aKP · DeepSeek · Nemotron Ultra
 
 **November 2026 — NIXAN local agent benchmarks.** Head-to-head on the same two
-tests (condominium portal + Bulgarian legal draft) for three scored models:
+tests (condominium portal + Bulgarian legal draft) for four scored models:
 
 1. **GLM C2aK** — GLM 5.3 Full 402K, prefix cache **off**
 2. **GLM C2aKP** — same GLM footprint, prefix cache **on**
 3. **DeepSeek V4.1 Flash** (stock) — peer on the same four-Spark lab
+4. **Nemotron Ultra NVFP4** — separate Ultra stack (`ultra`), same agent harnesses
 
-Weightless DeepSeek and Nemotron Ultra appear only as secondary footnotes, not
-as the primary three.
+DeepSeek **weightless** remains a secondary footnote (same family, 3-node lab
+note), not a fifth primary peer.
 
 **Public technical comparison only.** Scores measure harness behaviour, artifact
 integrity, closed-world tool use and (where stated) blinded quality review.
@@ -59,7 +60,7 @@ says otherwise.
 | `20261104T052556Z-zhivko2-codex-glm-5.3-long-c2akp-402k-max` | GLM **C2aKP** | 5 413 s ≈ **1 h 30 m** | **81.0** | **98.6%** | Finished. Same task; prefix cache on. |
 | `20261102T180828Z-zhivko2-codex-deepseek-v4.1-flash-1017` | DeepSeek **stock** | 1 656 s ≈ **28 m** | **94.0** | **97.9%** | Finished. Best official portal score. |
 | `20261103T063328Z-zhivko2-codex-deepseek-v4.1-flash-weightless` | DeepSeek **weightless** | 1 698 s ≈ **28 m** | **85.0** | **97.7%** | Finished. Criteria 100, trap **T7 −15**. |
-| `zhivko2-codex-ultra-20261103T171842Z` | **Ultra** | (incomplete accounting) | **0.24** | n/a | Weak / incomplete relative to finished peers; trap **T6**. Not a production peer. |
+| `zhivko2-codex-ultra-20261103T171842Z` | Nemotron **Ultra** | (incomplete accounting) | **0.24** | n/a | Primary peer; machine grade failed. Trap **T6** (tests weakened). |
 
 **Portal criterion snapshot (selected finished runs)**
 
@@ -89,6 +90,10 @@ says otherwise.
   **Z5** (`dates.ts` left identical to base; Sofia calendar boundary not fixed).
 - DeepSeek 94 misses **Z6** (suspense on expired/canceled intent) and loses 2 pts
   on **Z10** (report lint). C2aKP takes Z6 and a clean Z10.
+- **Nemotron Ultra** on the portal finished weakly (**0.24** / 100) with trap
+  **T6** (tests weakened). It is a finished-but-failed peer on this machine
+  grade, not an unfinished blank row — useful as a negative contrast to GLM /
+  DeepSeek on the same harness.
 
 ### 3.2 Legal draft — KALINA (quality rubric / 100)
 
@@ -107,18 +112,21 @@ standing/evidence 20 · uncertainty discipline 10.
 
 ---
 
-## 4. Side-by-side: what changed with C2aKP
+## 4. Side-by-side: four models
 
-| | GLM without cache | GLM **with** prefix cache (C2aKP) | DeepSeek stock |
-|---|---|---|---|
-| Portal machine score | 72.05 | **81.0** | **94.0** |
-| Portal wall | ~4.2 h | **~1.5 h** | ~0.5 h |
-| Portal cache hit on input | 0% | **~99%** | ~98% |
-| Legal quality | 59 | **69** | **79** |
-| Legal wall (order of magnitude) | ~5.5 h | **~2.1 h** | ~1 h |
+| | GLM C2aK | GLM **C2aKP** | DeepSeek stock | Nemotron **Ultra** |
+|---|---|---|---|---|
+| Portal machine score | 72.05 | **81.0** | **94.0** | **0.24** |
+| Portal wall | ~4.2 h | **~1.5 h** | ~0.5 h | incomplete accounting |
+| Portal cache hit on input | 0% | **~99%** | ~98% | n/a |
+| Portal traps | none | none | none | **T6** |
+| Legal quality | 59 | **69** | **79** | **47** |
+| Legal wall (order of magnitude) | ~5.5 h | **~2.1 h** | ~1 h | ~0.5 h |
 
 C2aKP improves GLM on **speed and score** on both tests. It does **not** overtake
-DeepSeek on either headline metric in this lab snapshot.
+DeepSeek on either headline metric in this lab snapshot. **Nemotron Ultra** is
+fastest on the legal wall clock among these four, but posts the **lowest** legal
+quality (**47**) and effectively fails the portal machine grade (**0.24**, T6).
 
 ---
 
