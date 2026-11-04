@@ -10,8 +10,8 @@ information, raw private logs, Keychain material or live credentials.
 
 | File | What it is |
 |---|---|
-| `MODEL_COMPARISON_2026-11.md` | **Four-model comparison** (GLM C2aK · GLM C2aKP · DeepSeek · Nemotron Ultra). |
-| `model-comparison-summary.json` | Machine-readable summary of the same four-model tables. |
+| `MODEL_COMPARISON_2026-11.md` | **Four-model comparison** with full checkpoint names, recipes, hardware and scores. |
+| `model-comparison-summary.json` | Machine-readable summary (full names + recipe ids + hardware). |
 | `KALINA_LEGAL_BENCHMARK_TECHNICAL_REPORT.md` | Earlier single-run technical report for GLM 402K without prefix cache. |
 | `metrics-summary.json` | Metrics for that earlier GLM Kalina run. |
 

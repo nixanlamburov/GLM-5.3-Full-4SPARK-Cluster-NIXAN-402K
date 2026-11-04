@@ -34,12 +34,12 @@ A closed-world Bulgarian legal-agent benchmark completed in 5:29:52.78 with:
 - 0 OOM and 0 preemptions;
 - hash-verified final delivery.
 
-### Four-model comparison — GLM C2aK · GLM C2aKP · DeepSeek · Nemotron Ultra (Nov 2026)
+### Four-model comparison — full names + recipes (Nov 2026)
 
-Same lab, same two agent tests (legal draft + condominium portal). Primary
-scoreboard (**C2aK** = prefix off, **C2aKP** = prefix on; Ultra = Nemotron NVFP4):
+Same lab (**4 × NVIDIA DGX Spark / GB10**), same two agent tests (legal draft +
+condominium portal). Primary scoreboard with checkpoint and recipe:
 
-| Test | GLM C2aK | GLM C2aKP | DeepSeek stock | Nemotron Ultra |
+| Test | `GLM-5.3-Int4-Int8Mix` **C2aK**<br>`NIXAN 402K` (prefix off) | `GLM-5.3-Int4-Int8Mix` **C2aKP**<br>`NIXAN 402K` (prefix on) | `DeepSeek-V4.1-Flash-1017`<br>`spark-ds41f-1030` / `tp4-switched` | `Nemotron-3-Ultra-550B-A55B-NVFP4`<br>`nemotron-ultra-tp4` |
 |---|---:|---:|---:|---:|
 | Portal machine score | 72.05 | **81.0** | **94.0** | **0.24** |
 | Portal wall | ~4.2 h | **~1.5 h** | ~0.5 h | weak / incomplete |

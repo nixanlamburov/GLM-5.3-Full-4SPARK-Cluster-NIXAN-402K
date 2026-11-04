@@ -1,9 +1,21 @@
 {
-  "schema": "nixan-model-comparison/1",
-  "title": "Four-model comparison: GLM C2aK, GLM C2aKP, DeepSeek V4.1 Flash, Nemotron Ultra",
-  "primary_models": ["glm_c2ak_402k", "glm_c2akp_402k", "deepseek_v41_flash_stock", "nemotron_ultra_nvfp4"],
+  "schema": "nixan-model-comparison/2",
+  "title": "Four-model comparison with full checkpoint names, recipes and hardware",
   "as_of": "2026-11-04",
   "disclaimer": "Technical and quality-rubric scores only. Not legal advice. No corpus, keys, or hidden tests published.",
+  "hardware": {
+    "nodes": "4 x NVIDIA DGX Spark / GB10",
+    "site": "NIXAN four-Spark cluster",
+    "agent_client": "Codex CLI",
+    "reasoning_effort_default": "max",
+    "gateway": "local LiteLLM OpenAI-compatible gateway to vLLM"
+  },
+  "primary_models": [
+    "glm_c2ak_402k",
+    "glm_c2akp_402k",
+    "deepseek_v41_flash_stock",
+    "nemotron_ultra_nvfp4"
+  ],
   "tests": [
     {
       "id": "kalina_legal_draft",
@@ -21,41 +33,79 @@
   "modes": [
     {
       "id": "glm_c2ak_402k",
+      "short_label": "GLM C2aK",
+      "full_name": "Tech2wild/GLM-5.3-Int4-Int8Mix",
+      "base_model": "zai-org/GLM-5.3",
+      "revision": "206507bbb047d8223964a0414cd83230c59428f9",
+      "recipe": "GLM 5.3 Full 4SPARK Cluster NIXAN 402K",
+      "profile": "C2aK",
       "model_route": "glm-5.3-long",
       "nodes": 4,
+      "parallelism": "TP4+DCP4",
       "engine_context": 402000,
       "client_input_cap": 335440,
       "prefix_caching": false,
-      "image_pin": "nixan/vllm-openai:nightly-aarch64-20261012"
+      "image_pin": "nixan/vllm-openai:nightly-aarch64-20261012",
+      "vllm_commit": "fe4df3df0eb703862c686b256e9fe44fa94c8945"
     },
     {
       "id": "glm_c2akp_402k",
+      "short_label": "GLM C2aKP",
+      "full_name": "Tech2wild/GLM-5.3-Int4-Int8Mix",
+      "base_model": "zai-org/GLM-5.3",
+      "revision": "206507bbb047d8223964a0414cd83230c59428f9",
+      "recipe": "GLM 5.3 Full 4SPARK Cluster NIXAN 402K",
+      "profile": "C2aKP",
       "model_route": "glm-5.3-long",
       "nodes": 4,
+      "parallelism": "TP4+DCP4",
       "engine_context": 402000,
       "client_input_cap": 335440,
       "prefix_caching": true,
       "image_pin": "nixan/vllm-openai:nightly-aarch64-20261012",
-      "notes": "Same footprint as C2aK; GLM53_PREFIX=1 only."
+      "notes": "Same footprint as C2aK; GLM53_PREFIX=1 only; gateway :4103."
     },
     {
       "id": "deepseek_v41_flash_stock",
+      "short_label": "DeepSeek stock",
+      "full_name": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "revision": "1bae0e1088993b9b82de08f59de5be5a34e42170",
+      "recipe": "spark-ds41f-1030",
+      "profile": "tp4-switched",
       "model_route": "deepseek-v4.1-flash",
       "nodes": 4,
-      "prefix_caching": true
+      "parallelism": "TP4",
+      "engine_context": 1048576,
+      "client_input_cap": 335440,
+      "prefix_caching": true,
+      "image_pin": "spark-ds41f:1030"
     },
     {
       "id": "deepseek_v41_flash_weightless",
+      "short_label": "DeepSeek weightless",
+      "full_name": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "revision": "1bae0e1088993b9b82de08f59de5be5a34e42170",
+      "recipe": "spark-ds41f-1030",
+      "profile": "weightless GLP dual-serve",
       "model_route": "deepseek-v4.1-flash-weightless",
+      "glp_vector": "msuiche/DeepSeek-V4.1-Flash-1017-abliterated-cyber-GLP-39-L1-39-a0.75",
       "nodes": 3,
-      "prefix_caching": true
+      "prefix_caching": true,
+      "primary": false,
+      "notes": "Secondary footnote; same 1017 weights with per-request GLP steering."
     },
     {
       "id": "nemotron_ultra_nvfp4",
+      "short_label": "Nemotron Ultra",
+      "full_name": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
+      "recipe": "nemotron-ultra-tp4",
+      "profile": "NVIDIA 4x DGX Spark Ultra Option A (NIXAN)",
       "model_route": "ultra",
       "nodes": 4,
+      "parallelism": "TP4",
       "client_input_cap": 524288,
-      "prefix_caching": true
+      "image_pin": "nixan/vllm-openai:nightly-aarch64-20261012",
+      "notes": "Separate Ultra stack; not the GLM 402K recipe."
     }
   ],
   "portal_machine_scores": [
