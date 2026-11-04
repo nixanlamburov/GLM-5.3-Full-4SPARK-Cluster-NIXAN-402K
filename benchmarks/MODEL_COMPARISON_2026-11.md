@@ -1,4 +1,14 @@
-# Model comparison — NIXAN local agent benchmarks (Nov 2026)
+# Three-model comparison: GLM C2aK · GLM C2aKP · DeepSeek V4.1 Flash
+
+**November 2026 — NIXAN local agent benchmarks.** Head-to-head on the same two
+tests (condominium portal + Bulgarian legal draft) for three scored models:
+
+1. **GLM C2aK** — GLM 5.3 Full 402K, prefix cache **off**
+2. **GLM C2aKP** — same GLM footprint, prefix cache **on**
+3. **DeepSeek V4.1 Flash** (stock) — peer on the same four-Spark lab
+
+Weightless DeepSeek and Nemotron Ultra appear only as secondary footnotes, not
+as the primary three.
 
 **Public technical comparison only.** Scores measure harness behaviour, artifact
 integrity, closed-world tool use and (where stated) blinded quality review.
@@ -8,8 +18,7 @@ Corpus files, hidden tests, answer keys, raw private logs, Keychain material and
 live credentials are **not** published.
 
 Repository context: this tree is the public **GLM 5.3 Full 4SPARK Cluster NIXAN
-402K** deployment recipe. Comparison rows also include other local models run on
-the same four-Spark lab under the same agent harnesses.
+402K** deployment recipe.
 
 ---
 

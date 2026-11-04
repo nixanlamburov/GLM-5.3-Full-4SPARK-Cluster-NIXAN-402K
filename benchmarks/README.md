@@ -10,8 +10,8 @@ information, raw private logs, Keychain material or live credentials.
 
 | File | What it is |
 |---|---|
-| `MODEL_COMPARISON_2026-11.md` | **Full public comparison** of tests, serving modes and scores (portal + legal). |
-| `model-comparison-summary.json` | Machine-readable summary of the same tables. |
+| `MODEL_COMPARISON_2026-11.md` | **Three-model comparison** (GLM C2aK · GLM C2aKP · DeepSeek): tests, modes, scores. |
+| `model-comparison-summary.json` | Machine-readable summary of the same three-model tables. |
 | `KALINA_LEGAL_BENCHMARK_TECHNICAL_REPORT.md` | Earlier single-run technical report for GLM 402K without prefix cache. |
 | `metrics-summary.json` | Metrics for that earlier GLM Kalina run. |
 

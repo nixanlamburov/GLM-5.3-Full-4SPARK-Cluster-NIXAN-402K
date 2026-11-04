@@ -34,10 +34,10 @@ A closed-world Bulgarian legal-agent benchmark completed in 5:29:52.78 with:
 - 0 OOM and 0 preemptions;
 - hash-verified final delivery.
 
-### November 2026 multi-model comparison
+### Three-model comparison — GLM C2aK · GLM C2aKP · DeepSeek (Nov 2026)
 
-Same lab, two agent tests (legal draft + condominium portal), several serving
-modes including **C2aK** (prefix off) and **C2aKP** (prefix on):
+Same lab, same two agent tests (legal draft + condominium portal). Primary
+scoreboard is these three models (**C2aK** = prefix off, **C2aKP** = prefix on):
 
 | Test | GLM C2aK | GLM C2aKP | DeepSeek stock |
 |---|---:|---:|---:|
