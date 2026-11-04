@@ -1,0 +1,147 @@
+{
+  "schema": "nixan-model-comparison/1",
+  "title": "NIXAN local agent benchmark comparison",
+  "as_of": "2026-11-04",
+  "disclaimer": "Technical and quality-rubric scores only. Not legal advice. No corpus, keys, or hidden tests published.",
+  "tests": [
+    {
+      "id": "kalina_legal_draft",
+      "persona": "kalina",
+      "description": "Closed-world synthetic Bulgarian civil answer draft (Art. 131 GPC workflow).",
+      "scorers": ["quality_rubric_100"]
+    },
+    {
+      "id": "zhivko_master_v2_portal",
+      "persona": "jivko",
+      "description": "TypeScript condo portal + FakeMollie; Z1–Z11 machine grade with traps T1–T7.",
+      "scorers": ["grade_py_z1_z11"]
+    }
+  ],
+  "modes": [
+    {
+      "id": "glm_c2ak_402k",
+      "model_route": "glm-5.3-long",
+      "nodes": 4,
+      "engine_context": 402000,
+      "client_input_cap": 335440,
+      "prefix_caching": false,
+      "image_pin": "nixan/vllm-openai:nightly-aarch64-20261012"
+    },
+    {
+      "id": "glm_c2akp_402k",
+      "model_route": "glm-5.3-long",
+      "nodes": 4,
+      "engine_context": 402000,
+      "client_input_cap": 335440,
+      "prefix_caching": true,
+      "image_pin": "nixan/vllm-openai:nightly-aarch64-20261012",
+      "notes": "Same footprint as C2aK; GLM53_PREFIX=1 only."
+    },
+    {
+      "id": "deepseek_v41_flash_stock",
+      "model_route": "deepseek-v4.1-flash",
+      "nodes": 4,
+      "prefix_caching": true
+    },
+    {
+      "id": "deepseek_v41_flash_weightless",
+      "model_route": "deepseek-v4.1-flash-weightless",
+      "nodes": 3,
+      "prefix_caching": true
+    },
+    {
+      "id": "nemotron_ultra_nvfp4",
+      "model_route": "ultra",
+      "nodes": 4,
+      "client_input_cap": 524288,
+      "prefix_caching": true
+    }
+  ],
+  "portal_machine_scores": [
+    {
+      "run_id": "20261102T003338Z-zhivko2-codex-glm-5.3-long-c2ak-402k-max",
+      "mode": "glm_c2ak_402k",
+      "score": 72.05,
+      "wall_s": 15209.1,
+      "cache_read_pct": 0.0,
+      "status": "finished"
+    },
+    {
+      "run_id": "20261104T052556Z-zhivko2-codex-glm-5.3-long-c2akp-402k-max",
+      "mode": "glm_c2akp_402k",
+      "score": 81.0,
+      "wall_s": 5413.4,
+      "cache_read_pct": 98.6,
+      "tokens": { "input": 10555149, "output": 72780, "cache_read": 10404608 },
+      "status": "finished",
+      "z_points": {
+        "Z1": 15, "Z2": 15, "Z3": 0, "Z4": 8, "Z5": 0, "Z6": 4,
+        "Z7": 20.0, "Z8": 8, "Z9": 4, "Z10": 4, "Z11": 3
+      },
+      "traps_violated": []
+    },
+    {
+      "run_id": "20261102T180828Z-zhivko2-codex-deepseek-v4.1-flash-1017",
+      "mode": "deepseek_v41_flash_stock",
+      "score": 94.0,
+      "wall_s": 1656.1,
+      "cache_read_pct": 97.9,
+      "status": "finished",
+      "z_points": {
+        "Z1": 15, "Z2": 15, "Z3": 15, "Z4": 8, "Z5": 4, "Z6": 0,
+        "Z7": 20.0, "Z8": 8, "Z9": 4, "Z10": 2, "Z11": 3
+      },
+      "traps_violated": []
+    },
+    {
+      "run_id": "20261103T063328Z-zhivko2-codex-deepseek-v4.1-flash-weightless",
+      "mode": "deepseek_v41_flash_weightless",
+      "score": 85.0,
+      "wall_s": 1698.2,
+      "cache_read_pct": 97.7,
+      "status": "finished",
+      "notes": "Item sum 100; T7 history trap -15.",
+      "traps_violated": ["T7_history_deleted"]
+    },
+    {
+      "run_id": "zhivko2-codex-ultra-20261103T171842Z",
+      "mode": "nemotron_ultra_nvfp4",
+      "score": 0.24,
+      "wall_s": null,
+      "status": "incomplete_or_weak",
+      "traps_violated": ["T6_tests_weakened"]
+    }
+  ],
+  "kalina_quality_scores": [
+    {
+      "mode": "glm_c2ak_402k",
+      "quality_score": 59,
+      "approx_wall_s": 19793,
+      "notes": "Earlier published GLM legal peer; quality rubric."
+    },
+    {
+      "mode": "glm_c2akp_402k",
+      "run_id": "20261103T203612Z-a87eb84ed1ee",
+      "quality_score": 69,
+      "wall_s": 7702,
+      "notes": "Prefix cache on; quality rubric; not legal advice."
+    },
+    {
+      "mode": "deepseek_v41_flash_stock",
+      "quality_score": 79,
+      "approx_wall_s": 3300,
+      "notes": "Best legal quality among scored peers."
+    },
+    {
+      "mode": "nemotron_ultra_nvfp4",
+      "quality_score": 47,
+      "approx_wall_s": 1694,
+      "notes": "Weaker deadline discipline on this task."
+    }
+  ],
+  "frozen_baselines": {
+    "portal_glm_c2ak": 72.05,
+    "portal_deepseek_stock": 94.0,
+    "note": "C2aKP rows are named variants; they do not overwrite these baselines."
+  }
+}

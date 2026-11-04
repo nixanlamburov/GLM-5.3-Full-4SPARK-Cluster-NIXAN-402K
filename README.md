@@ -20,7 +20,9 @@ NVIDIA DGX Spark nodes.
 - single active long-job sequence
 - no OOM, no preemption and no competing request during the completed run
 
-## Completed benchmark
+## Completed benchmarks
+
+### Original GLM 402K legal run (prefix cache off)
 
 A closed-world Bulgarian legal-agent benchmark completed in 5:29:52.78 with:
 
@@ -32,9 +34,25 @@ A closed-world Bulgarian legal-agent benchmark completed in 5:29:52.78 with:
 - 0 OOM and 0 preemptions;
 - hash-verified final delivery.
 
+### November 2026 multi-model comparison
+
+Same lab, two agent tests (legal draft + condominium portal), several serving
+modes including **C2aK** (prefix off) and **C2aKP** (prefix on):
+
+| Test | GLM C2aK | GLM C2aKP | DeepSeek stock |
+|---|---:|---:|---:|
+| Portal machine score | 72.05 | **81.0** | **94.0** |
+| Portal wall | ~4.2 h | **~1.5 h** | ~0.5 h |
+| Legal quality rubric | 59 | **69** | **79** |
+
+Full tables, mode definitions and run IDs:
+[`benchmarks/MODEL_COMPARISON_2026-11.md`](benchmarks/MODEL_COMPARISON_2026-11.md)
+· JSON summary:
+[`benchmarks/model-comparison-summary.json`](benchmarks/model-comparison-summary.json).
+
 All scores in this repository concern technical behavior, artifact integrity,
-traceability and systems performance only. They are not legal opinions and do
-not establish legal correctness.
+traceability, systems performance and (where labelled) quality-rubric review.
+They are not legal opinions and do not establish legal correctness.
 
 ## Repository map
 
@@ -42,7 +60,7 @@ not establish legal correctness.
 - `recipe/` — sanitized launch arguments, environment example and checkpoint chat template.
 - `patches/` — local attention overlay, with its verification limit stated in `patches/README.md`.
 - `gateway/` — sanitized LiteLLM examples and reservation policy.
-- `benchmarks/` — technical report and machine-readable metrics.
+- `benchmarks/` — technical report, **model comparison**, and machine-readable metrics.
 - `scripts/` — upstream download, audit and public-tree validation.
 - `LICENSE-GLM-5.3` — byte copy of the upstream license. It is separate from the Apache-2.0 `LICENSE` of the NIXAN recipe.
 
