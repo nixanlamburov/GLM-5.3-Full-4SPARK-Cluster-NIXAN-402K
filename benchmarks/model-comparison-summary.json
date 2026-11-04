@@ -1,6 +1,6 @@
 {
   "schema": "nixan-model-comparison/2",
-  "title": "Four-model comparison with full checkpoint names, recipes and hardware",
+  "title": "Four-model comparison: full checkpoint · recipe · profile on 4x DGX Spark / GB10",
   "as_of": "2026-11-04",
   "disclaimer": "Technical and quality-rubric scores only. Not legal advice. No corpus, keys, or hidden tests published.",
   "hardware": {
@@ -33,7 +33,7 @@
   "modes": [
     {
       "id": "glm_c2ak_402k",
-      "short_label": "GLM C2aK",
+      "short_label": "Tech2wild/GLM-5.3-Int4-Int8Mix · GLM 5.3 Full 4SPARK Cluster NIXAN 402K · C2aK",
       "full_name": "Tech2wild/GLM-5.3-Int4-Int8Mix",
       "base_model": "zai-org/GLM-5.3",
       "revision": "206507bbb047d8223964a0414cd83230c59428f9",
@@ -50,7 +50,7 @@
     },
     {
       "id": "glm_c2akp_402k",
-      "short_label": "GLM C2aKP",
+      "short_label": "Tech2wild/GLM-5.3-Int4-Int8Mix · GLM 5.3 Full 4SPARK Cluster NIXAN 402K · C2aKP",
       "full_name": "Tech2wild/GLM-5.3-Int4-Int8Mix",
       "base_model": "zai-org/GLM-5.3",
       "revision": "206507bbb047d8223964a0414cd83230c59428f9",
@@ -67,7 +67,7 @@
     },
     {
       "id": "deepseek_v41_flash_stock",
-      "short_label": "DeepSeek stock",
+      "short_label": "deepseek-ai/DeepSeek-V4.1-Flash-1017 · spark-ds41f-1030 / tp4-switched",
       "full_name": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "revision": "1bae0e1088993b9b82de08f59de5be5a34e42170",
       "recipe": "spark-ds41f-1030",
@@ -82,7 +82,7 @@
     },
     {
       "id": "deepseek_v41_flash_weightless",
-      "short_label": "DeepSeek weightless",
+      "short_label": "deepseek-ai/DeepSeek-V4.1-Flash-1017 · spark-ds41f-1030 weightless GLP",
       "full_name": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
       "revision": "1bae0e1088993b9b82de08f59de5be5a34e42170",
       "recipe": "spark-ds41f-1030",
@@ -96,7 +96,7 @@
     },
     {
       "id": "nemotron_ultra_nvfp4",
-      "short_label": "Nemotron Ultra",
+      "short_label": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4 · nemotron-ultra-tp4",
       "full_name": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
       "recipe": "nemotron-ultra-tp4",
       "profile": "NVIDIA 4x DGX Spark Ultra Option A (NIXAN)",
